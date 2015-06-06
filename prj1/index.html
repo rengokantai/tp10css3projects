@@ -3,8 +3,301 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Palanquin;
+            line-height: 1.618em;
+            background: #3498db;
+            color: #fff;
+        }
+        .wrapper{
+            max-width: 50rem;
+            width: 100%;
+            margin: 5rem auto 15rem auto;
+            text-align: center;
+        }
+
+        h1.loading{
+            font-size: 3em;
+            font-weight: 400;
+            margin-left: 3rem;
+        }
+
+        span[class^='dot_']{
+            opacity:0;
+        }
+        .bouncing_ball{
+            position: relative;
+            width: 4rem;
+            margin: 0 auto;
+            height: 12rem;
+        }
+
+        .ball{
+            width: 4rem;
+            height: 4rem;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute;
+            top: 0;
+            -webkit-animation: bounce 1s infinite;
+            -o-animation: bounce 1s infinite;
+            animation: bounce 1s infinite;
+        }
+
+        .spinner{
+            position: relative;
+            width: 6rem;
+            height: 6rem;
+            margin: 6rem auto;
+        }
+        div[class^='curve_']{
+            position: absolute;
+            -webkit-transform: rotate(135deg);
+            -moz-transform: rotate(135deg);
+            -ms-transform: rotate(135deg);
+            -o-transform: rotate(135deg);
+            transform: rotate(135deg);
+            animation: spin 4s infinite;
+        }
+
+        .curve_top_left{
+            width: 3rem;
+            height: 3rem;
+            border-top: 0.5rem solid #ffffff;
+            border-left: 0.5rem solid #ffffff;
+            border-top-left-radius: 200%;
+            top: 0;
+            left: 0;
+            -webkit-transform-origin: 100% 100%;
+            -moz-transform-origin: 100% 100%;
+            -ms-transform-origin: 100% 100%;
+            -o-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+        }
+
+        .curve_bottom_right{
+            width: 3rem;
+            height: 3rem;
+            border-bottom: 0.5rem solid #ffffff;
+            border-right: 0.5rem solid #ffffff;
+            border-bottom-right-radius: 200%;
+            bottom: 0;
+            right: 0;
+            -webkit-transform-origin: 0% 0%;
+            -moz-transform-origin: 0% 0%;
+            -ms-transform-origin: 0% 0%;
+            -o-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+        }
+
+        .curve_top_right{
+            width: 2rem;
+            height: 2rem;
+            border-top: 0.5rem solid #ffffff;
+            border-right: 0.5rem solid #ffffff;
+            border-top-right-radius: 200%;
+            top: 1rem;
+            right: 1rem;
+            -webkit-transform-origin: 0% 100%;
+            -moz-transform-origin: 0% 100%;
+            -ms-transform-origin: 0% 100%;
+            -o-transform-origin: 0% 100%;
+            transform-origin: 0% 100%;
+        }
+
+        .curve_bottom_left{
+            width: 2rem;
+            height: 2rem;
+            border-bottom: 0.5rem solid #ffffff;
+            border-left: 0.5rem solid #ffffff;
+            border-bottom-left-radius: 200%;
+            bottom: 1rem;
+            left: 1rem;
+            -webkit-transform-origin: 100% 0%;
+            -moz-transform-origin: 100% 0%;
+            -ms-transform-origin: 100% 0%;
+            -o-transform-origin: 100% 0%;
+            transform-origin: 100% 0%;
+        }
+
+        .center_circle{
+            width: 1.5rem;
+            height: 1.5rem;
+            background: #ffffff;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            position: absolute;
+            top: 2.25rem;
+            left: 2.25rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes spin {
+            0%{
+                -webkit-transform: rotate(135deg);
+                -moz-transform: rotate(135deg);
+                -ms-transform: rotate(135deg);
+                -o-transform: rotate(135deg);
+                transform: rotate(135deg);
+                opacity: 1;
+            }
+            25%{
+                opacity: 0.75;
+            }
+            50%{
+                -webkit-transform: rotate(675deg);
+                -moz-transform: rotate(675deg);
+                -ms-transform: rotate(675deg);
+                -o-transform: rotate(675deg);
+                transform: rotate(675deg);
+                opacity: 1;
+            }
+            75%{
+                opacity: 0.75;
+            }
+            100%{
+                -webkit-transform: rotate(135deg);
+                -moz-transform: rotate(135deg);
+                -ms-transform: rotate(135deg);
+                -o-transform: rotate(135deg);
+                transform: rotate(135deg);
+                opacity: 1;
+            }
+        }
+
+
+        
+        @keyframes bounce {
+            0%{
+                top: 0;
+                -webkit-animation-timing-function: ease-in;
+                -moz-animation-timing-function: ease-in;
+                -o-animation-timing-function: ease-in;
+                animation-timing-function: ease-in;
+            }
+            34%{
+                height: 4rem;
+                width: 4rem;
+            }
+            35%{
+                top: 8rem;
+                height: 3rem;
+                width: 4.3rem;
+                -webkit-animation-timing-function: ease-out;
+                -moz-animation-timing-function: ease-out;
+                -o-animation-timing-function: ease-out;
+                animation-timing-function: ease-out;
+            }
+            45%{
+                height: 4rem;
+                width: 4rem;
+            }
+            90%{
+                top: 0;
+            }
+            100%{
+                top: 0;
+            }
+        }
+
+        .dot_one{
+            -webkit-animation: dot_one 2s infinite linear;
+            -o-animation: dot_one 2s infinite linear;
+            animation: dot_one 2s infinite linear;
+        }
+
+        .dot_two{
+            -webkit-animation: dot_two 2s infinite linear;
+            -o-animation: dot_two 2s infinite linear;
+            animation: dot_two 2s infinite linear;
+        }
+
+        .dot_three{
+            -webkit-animation: dot_three 2s infinite linear;
+            -o-animation: dot_three 2s infinite linear;
+            animation: dot_three 2s infinite linear;
+        }
+        @keyframes dot_one{
+            0%{
+                opacity: 1;
+            }
+            15%{
+                opacity: 0;
+            }
+            25%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+
+        @keyframes dot_two{
+            0%{
+                opacity: 0;
+            }
+            40%{
+                opacity: 0;
+            }
+            50%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+
+        @keyframes dot_three{
+            0%{
+                opacity: 0;
+            }
+            65%{
+                opacity: 0;
+            }
+            75%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
-
+<div class="wrapper">
+    <div class="bouncing_ball">
+        <div class="ball"></div>
+    </div>
+    <div class="spinner">
+        <div class="curve_top_left"></div>
+        <div class="curve_bottom_right"></div>
+        <div class="curve_top_right"></div>
+        <div class="curve_bottom_left"></div>
+        <div class="center_circle"></div>
+    </div>
+<h1 class="loading">loading
+    <span class="dot_one">.</span>
+    <span class="dot_two">.</span>
+    <span class="dot_three">.</span>
+</h1>
+</div>
 </body>
 </html>
